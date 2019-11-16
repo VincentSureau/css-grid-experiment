@@ -1,7 +1,12 @@
+/* Basic reset */
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+/* Globals */
 
 body {
     min-height: 100vh;
@@ -9,52 +14,94 @@ body {
 
 .container {
     padding: 2%;
-    min-height: 100%;
+    min-height: 100vh;
     display: grid;
-    grid-template-columns: [first-col] 1fr [middle-col] 2fr [last-col] 1fr;
-    grid-template-rows: 150px auto 150px;
     grid-template-areas: 
-        "header header header"
-        "nav content sidebar"
-        "footer footer footer"
+        "header"
+        "content"
+        "nav"
+        "sidebar"
+        "footer"
     ;
+    grid-template-rows: 1fr minmax(300px, auto) repeat(3, 1fr);
     grid-auto-flow: row;
     gap: 15px;
     justify-content: stretch;
 }
 
+/* header */
+
 .header {
-    background-color: blue;
     grid-area: header;
     padding: 2%;
 }
 
+/* nav */
+
 .nav {
-    background-color: violet;
     grid-area: nav;
     padding: 2%;
 }
 
+/* content */
+
 .content {
-    background-color: red;
     grid-area: content;
     align-self: stretch;
     grid-row: 2 / 3;
     padding: 2%;
 }
 
+/* sidebar */
+
 .sidebar {
-    background-color: green;
     grid-area: sidebar;
     padding: 2%;
 }
 
+/* footer */
+
 .footer {
-    background-color: yellow;
     grid-area: footer;
     padding: 2%;
 }
 
+/* utils */
+
 .rounded {
     border-radius: 15px;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.purple {
+    background-color: violet;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+/* Responsive */
+
+@media screen and (min-width: 640px) {
+    .container {
+        grid-template-rows: 150px auto 150px;
+        grid-template-columns: [first-col] 1fr [middle-col] 2fr [last-col] 1fr;
+        grid-template-areas: 
+            "header header header"
+            "nav content sidebar"
+            "footer footer footer"
+        ;
+    }
 }
